@@ -1,7 +1,7 @@
 ## VARIABLES ##
 
 NAME = so_long
-HEADRS = so_long.h
+HEADERS = so_long.h
 ##SRCS_DIR = SRCS_LIBFT
 PRINTF_DIR = ft_printf
 
@@ -21,13 +21,13 @@ CFLAGS = -Wall -Werror -Wextra -g
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) Makefile $(HEADRS)
+$(NAME) : $(OBJS) Makefile $(HEADERS)
 		clang $(CFLAGS) $(OBJS) -o $(NAME)
 
 
 ## COMPILAR OBJETOS ##
 
-%.o: %.c $(HEADRS) Makefile
+%.o: %.c $(HEADERS) Makefile
 		clang $(CFLAGS) -c $< -o $@
 
 ## PHONYS ##
