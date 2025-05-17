@@ -9,6 +9,9 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int	main();
+int	main(int argc, char *argv[]);
+char	**read_maps(int fd);
+void	free_map(char **map);
+int	check_map(char **map);
 
 #endif
