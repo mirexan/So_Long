@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_so_long.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/20 21:01:13 by mregada-          #+#    #+#             */
+/*   Updated: 2025/05/20 21:04:17 by mregada-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	main(int argc, char *argv[])
@@ -23,7 +35,9 @@ int	main(int argc, char *argv[])
     free_map(map);
     return(1);
   }
-  int i = 0;
+	init_window();
+  /* IMPRIMIR MAPA
+	int i = 0;
   int j;
   while (map[i])
   {
@@ -35,7 +49,7 @@ int	main(int argc, char *argv[])
     }
     ft_printf("\n");
     i++;
-  }
+  }*/
   close(fd);
   return (0);
 }

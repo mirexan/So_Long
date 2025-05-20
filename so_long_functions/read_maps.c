@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_maps.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/20 21:05:19 by mregada-          #+#    #+#             */
+/*   Updated: 2025/05/20 22:06:20 by mregada-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../so_long.h"
 
-void free_map(char **map)
+void	free_map(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!map)
@@ -16,15 +27,14 @@ void free_map(char **map)
 static char	**allocate_tmp(char **map, int read_lines, char *line)
 {
 	char	**tmp;
-	int	i;
+	int		i;
 
 	i = 0;//reserva espacio para una línea de más y un NULL final
 	tmp = malloc(sizeof(char *) * (read_lines + 2));
 	if (!tmp)
 		return (NULL);
 	while (i < read_lines)
-	{
-		//copia líneas leídas en el nuevo array
+	{//copia líneas leídas en el nuevo array
 		tmp[i] = map[i]; //se añade a tmp para copiar
 		i++;
 	}
@@ -32,6 +42,7 @@ static char	**allocate_tmp(char **map, int read_lines, char *line)
 	tmp[read_lines + 1] = NULL; //y se añade NULL
 	return(tmp);
 }
+
 static char	*clean_line(char *line)
 {
 	int	len;
@@ -44,7 +55,7 @@ static char	*clean_line(char *line)
 	return (line);
 }
 
-char **read_maps(int fd)
+char	**read_maps(int fd)
 {
 	char	*line;
 	char	**map;

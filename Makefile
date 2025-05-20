@@ -2,10 +2,15 @@
 
 NAME = so_long
 HEADERS = so_long.h
-##SRCS_DIR = SRCS_LIBFT
+
+##DIRECTORIOS & LIB
+
 PRINTF_DIR = ft_printf
 GNL_DIR = ft_getNextLine
 SL_DIR = so_long_functions
+MLX_DIR = minilibx-linux
+MLX_LIB = $(MLX_DIR)/libmlx.a
+
 ## ARCHIVOS FUENTE ##
 
 SRCS =  $(PRINTF_DIR)/char_handler.c $(PRINTF_DIR)/ft_puthex.c $(PRINTF_DIR)/Libft_src/ft_putchar_fd.c \
@@ -19,17 +24,22 @@ OBJS = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Werror -Wextra -g
 
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm 
+
 ## COMPILAR EJECUTABLE ##
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) Makefile $(HEADERS)
-		gcc $(CFLAGS) $(OBJS) -o $(NAME)
+$(MLXX_LIB):
+	$(MAKE) -C $(MLX_DIR)
+
+$(NAME) : $(OBJS) Makefile $(HEADERS) $(MLX_LIB)
+		gcc $(CFLAGS) $(OBJS) $(MLX_FLAGS)-o $(NAME)
 
 
 ## COMPILAR OBJETOS ##
 
-%.o: %.c $(HEADERS) Makefile
+%.o: %.c $(HEADERS)
 		gcc $(CFLAGS) -c $< -o $@
 
 ## PHONYS ##
