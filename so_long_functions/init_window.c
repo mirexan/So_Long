@@ -6,11 +6,11 @@
 /*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 21:06:40 by mregada-          #+#    #+#             */
-/*   Updated: 2025/05/20 22:15:08 by mregada-         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:55:13 by mregada-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "../so_long.h"
 
 static int	count_lines(char **map)
 {
@@ -24,9 +24,9 @@ static int	count_lines(char **map)
 
 void	init_window(char **map)
 {
-	void	*mlx;
-	void	*win;
-	int		height;
+	void		*mlx;
+	void		*win;
+	int			height;
 
 	mlx = mlx_init(); //inicia conexion con sistema grafico y devuelve puntero
 	if (!mlx)//de contexto
@@ -44,5 +44,6 @@ void	init_window(char **map)
 		free_map(map);
 		exit (1);
 	}
+	load_draw_map(mlx, win, map);
 	mlx_loop(mlx);//Inicia bucle de eventos
 }
