@@ -43,5 +43,8 @@ int	main(int argc, char *argv[])
 	}
 	game.map = open_read_maps(argv);
 	init_window(&game);
+	mlx_hook(game.win, 2, 1L << 0, handle_key,&game);
+	mlx_hook(game.win, 17, 0, handle_close,&game);
+	mlx_loop(game->mlx);//Inicia bucle de eventos
 	return (0);
 }

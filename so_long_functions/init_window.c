@@ -43,5 +43,4 @@ void	init_window(t_game	*game)
 		exit (1);
 	}
 	load_draw_map(game);
-	mlx_loop(game->mlx);//Inicia bucle de eventos
 }
