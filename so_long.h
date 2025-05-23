@@ -6,7 +6,7 @@
 /*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 21:42:05 by mregada-          #+#    #+#             */
-/*   Updated: 2025/05/22 21:12:04 by mregada-         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:42:09 by mregada-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,22 @@ typedef struct	s_sprites
 	//void	*player_rigth;
 } t_sprites;
 
+typedef struct	s_game
+{
+	void		*mlx;
+	void		*win;
+	char		**map;
+	int			player_x;
+	int			player_y;
+	int			moves;
+	t_sprites	sprites;
+} t_game;
+
 char	**read_maps(int fd);
 void	free_map(char **map);
-int		check_map(char **map);
-void	init_window(char **map);
-void	draw_map(void *mlx, void *win, char **map, t_sprites sprite);
-void	load_draw_map(void *mlx, void *win, char **map);
+int		check_map(t_game *game);
+void	init_window(t_game *game);
+void	draw_map(t_game *game);
+void	load_draw_map(t_game *game);
 
 #endif

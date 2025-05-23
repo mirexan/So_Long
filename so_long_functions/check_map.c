@@ -6,24 +6,24 @@
 /*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 21:05:08 by mregada-          #+#    #+#             */
-/*   Updated: 2025/05/20 22:33:03 by mregada-         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:39:28 by mregada-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static int	check_map_shape(char **map)
+static int	check_map_shape(t_game *game)
 {
 	int	i;
 	int	len;
 
-	if (!map || !map[0])
+	if (!game->map || !game->map[0])
 		return (0);
-	len = ft_strlen(map[0]);
+	len = ft_strlen(game->map[0]);
 	i = 1;
-	while (map[i])
+	while (game->map[i])
 	{
-		if (ft_strlen(map[i]) != len)
+		if (ft_strlen(game->map[i]) != len)
 			return (0);
 		i++;
 	}
@@ -40,7 +40,7 @@ static void	count_elements(char c_map, int *p, int *e, int *c)
 		(*c)++;
 }
 
-static int	check_map_elements(char **map)
+static int	check_map_elements(t_game *game)
 {
 	int	i;
 	int	j;
@@ -52,56 +52,56 @@ static int	check_map_elements(char **map)
 	p = 0;
 	e = 0;
 	c = 0;
-	while (map[i])
+	while (game->map[i])
 	{
 		j = 0;
-		while (map[i][j])
-			count_elements(map[i][j++], &p, &e, &c);
+		while (game->map[i][j])
+			count_elements(game->map[i][j++], &p, &e, &c);
 		i++;
 	}
 	return (p == 1 && e == 1 && c >= 1);
 }
 
-static int	check_map_walls(char **map)
+static int	check_map_walls(t_game *game)
 {
 	int	i;
 	int	height;
 	int	width;
 
 	height = 0;
-	while (map[height])
+	while (game->map[height])
 		height++;
-	width = ft_strlen(map[0]);
+	width = ft_strlen(game->map[0]);
 	i = 0;
 	while (i < width)
 	{
-		if (map[0][i] != '1' || map[height - 1][i] != '1')
+		if (game->map[0][i] != '1' || game->map[height - 1][i] != '1')
 			return (0);
 		i++;
 	}
 	i = 0;
 	while (i < height)
 	{
-		if (map[i][0] != '1' || map[i][width - 1] != '1')
+		if (game->map[i][0] != '1' || game->map[i][width - 1] != '1')
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	check_map(char **map)
+int	check_map(t_game *game)
 {
-	if (!check_map_shape(map))
+	if (!check_map_shape(game))
 	{
 		ft_putstr_fd("Error en la forma del mapa\n", 2);
 		return (0);
 	}
-	if (!check_map_elements(map))
+	if (!check_map_elements(game))
 	{
 		ft_putstr_fd("Error en los elementos del mapa\n", 2);
 		return (0);
 	}
-	if (!check_map_walls(map))
+	if (!check_map_walls(game))
 	{
 		ft_putstr_fd("Error en los muros del mapa\n", 2);
 		return (0);
