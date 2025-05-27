@@ -6,7 +6,7 @@
 /*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 21:01:13 by mregada-          #+#    #+#             */
-/*   Updated: 2025/05/23 18:43:42 by mregada-         ###   ########.fr       */
+/*   Updated: 2025/05/23 19:51:06 by mregada-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int	main(int argc, char *argv[])
 	init_window(&game);
 	mlx_hook(game.win, 2, 1L << 0, handle_key,&game);
 	mlx_hook(game.win, 17, 0, handle_close,&game);
-	mlx_loop(game->mlx);//Inicia bucle de eventos
+	mlx_loop(game.mlx);//Inicia bucle de eventos
 	return (0);
 }

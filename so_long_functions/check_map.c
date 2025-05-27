@@ -6,7 +6,7 @@
 /*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 21:05:08 by mregada-          #+#    #+#             */
-/*   Updated: 2025/05/23 18:39:28 by mregada-         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:49:29 by mregada-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,19 @@ static int	check_map_elements(t_game *game)
 	p = 0;
 	e = 0;
 	c = 0;
-	while (game->map[i])
+	while (game->map[i++])
 	{
 		j = 0;
-		while (game->map[i][j])
-			count_elements(game->map[i][j++], &p, &e, &c);
-		i++;
+		while (game->map[i][j++])
+		{
+			count_elements(game->map[i][j], &p, &e, &c);
+			if (game->map[i][j] == 'P')
+			{
+				game->player_y = i;
+				game->player_x = j;
+				game->map[i][j] = '0';
+			}
+		}
 	}
 	return (p == 1 && e == 1 && c >= 1);
 }
