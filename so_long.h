@@ -6,7 +6,7 @@
 /*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 21:42:05 by mregada-          #+#    #+#             */
-/*   Updated: 2025/05/27 20:01:05 by mregada-         ###   ########.fr       */
+/*   Updated: 2025/05/27 20:10:56 by mregada-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ typedef struct	s_sprites
 	void	*collect;
 	void	*exit; 
 	void	*player;
-	void	*move[4];
+	void	*player_up;
+	void	*player_left;
+	void	*player_right;
+	//void	*move[4][2];
 } t_sprites;
 
 typedef struct	s_game
@@ -43,9 +46,9 @@ typedef struct	s_game
 	char		**map;
 	int			player_x;
 	int			player_y;
-	int			player_dir:
+	int			player_dir;
 	//int			player_moving;
-	//int			move_count;
+	int			move_count;
 	t_sprites	sprites;
 } t_game;
 

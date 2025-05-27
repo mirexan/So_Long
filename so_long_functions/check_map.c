@@ -6,7 +6,7 @@
 /*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 21:05:08 by mregada-          #+#    #+#             */
-/*   Updated: 2025/05/27 19:49:29 by mregada-         ###   ########.fr       */
+/*   Updated: 2025/05/27 20:44:44 by mregada-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,22 @@ static int	check_map_elements(t_game *game)
 	int	e;
 	int	c;
 
-	i = 0;
+	i = -1;
 	p = 0;
 	e = 0;
 	c = 0;
-	while (game->map[i++])
+	while (game->map[++i])
 	{
-		j = 0;
-		while (game->map[i][j++])
+		j = -1;
+		while (game->map[i][++j])
 		{
 			count_elements(game->map[i][j], &p, &e, &c);
 			if (game->map[i][j] == 'P')
 			{
 				game->player_y = i;
 				game->player_x = j;
+				game->player_dir = 0;
+				printf("Jugador en: x = %d, y = %d\n", game->player_x, game->player_y);
 				game->map[i][j] = '0';
 			}
 		}
