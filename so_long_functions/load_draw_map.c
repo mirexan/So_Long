@@ -6,7 +6,7 @@
 /*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 18:52:21 by mregada-          #+#    #+#             */
-/*   Updated: 2025/05/27 21:09:43 by mregada-         ###   ########.fr       */
+/*   Updated: 2025/05/27 21:23:49 by mregada-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	draw_player(t_game *game)
 	x = game->player_x * TILE_SIZE;
 	y = game->player_y * TILE_SIZE;
 	mlx_put_image_to_window(game->mlx, game->win, game->sprites.floor, x, y);
-	printf("Dibujando jugador en x=%d, y=%d, dir=%d\n", game->player_x, game->player_y, game->player_dir);
+	ft_printf("Dibujando jugador en x=%d, y=%d, dir=%d\n", game->player_x, game->player_y, game->player_dir);
 	if (game->player_dir == 0)
 		img = game->sprites.player;
 	else if (game->player_dir == 1)

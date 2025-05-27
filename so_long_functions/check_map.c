@@ -6,7 +6,7 @@
 /*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 21:05:08 by mregada-          #+#    #+#             */
-/*   Updated: 2025/05/27 20:44:44 by mregada-         ###   ########.fr       */
+/*   Updated: 2025/05/27 21:25:27 by mregada-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	check_map_elements(t_game *game)
 				game->player_y = i;
 				game->player_x = j;
 				game->player_dir = 0;
-				printf("Jugador en: x = %d, y = %d\n", game->player_x, game->player_y);
+		ft_printf("Dibujando jugador en x=%d, y=%d, dir=%d\n", game->player_x, game->player_y, game->player_dir);
 				game->map[i][j] = '0';
 			}
 		}
