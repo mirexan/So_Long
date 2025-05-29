@@ -63,7 +63,6 @@ static int	check_map_elements(t_game *game)
 				game->player_y = i;
 				game->player_x = j;
 				game->player_dir = 0;
-		ft_printf("Dibujando jugador en x=%d, y=%d, dir=%d\n", game->player_x, game->player_y, game->player_dir);
 				game->map[i][j] = '0';
 			}
 		}

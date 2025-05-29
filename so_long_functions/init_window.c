@@ -25,7 +25,7 @@ static int	count_lines(char **map)
 void	init_window(t_game	*game)
 {
 	int			height;
-
+	
 	game->mlx = mlx_init(); //inicia conexion con sistema grafico y devuelve puntero
 	if (!game->mlx)//de contexto
 	{

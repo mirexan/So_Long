@@ -6,7 +6,7 @@
 /*   By: mregada- <mregada-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 18:52:21 by mregada-          #+#    #+#             */
-/*   Updated: 2025/05/27 21:23:49 by mregada-         ###   ########.fr       */
+/*   Updated: 2025/05/29 20:01:03 by mregada-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,6 @@ static void	*load_image(t_game *game, char *path)
 	return (img);
 }
 
-static void	draw_player(t_game *game)
-{
-	int		x;
-	int		y;
-	void	*img;
-	x = game->player_x * TILE_SIZE;
-	y = game->player_y * TILE_SIZE;
-	mlx_put_image_to_window(game->mlx, game->win, game->sprites.floor, x, y);
-	ft_printf("Dibujando jugador en x=%d, y=%d, dir=%d\n", game->player_x, game->player_y, game->player_dir);
-	if (game->player_dir == 0)
-		img = game->sprites.player;
-	else if (game->player_dir == 1)
-		img = game->sprites.player_up;
-	else if (game->player_dir == 2)
-		img = game->sprites.player_left;
-	else
-		img = game->sprites.player_right;
-	mlx_put_image_to_window(game->mlx, game->win, img, x, y);
-}
-
 static void	load_sprites(t_game *game)
 {
 	game->sprites.floor = load_image(game, "./sprites/floor_64.xpm");
@@ -58,10 +38,13 @@ static void	load_sprites(t_game *game)
 	game->sprites.collect = load_image(game, "./sprites/collect_64.xpm");
 	game->sprites.exit = load_image(game, "./sprites/exit_64.xpm");
 	game->sprites.player_up = load_image(game, "./sprites/Racoon_up.xpm");
+	game->sprites.player_up_1 = load_image(game, "./sprites/Racoon_up_1.xpm");
 	game->sprites.player = load_image(game, "./sprites/Racoon_64.xpm");
+	game->sprites.player_1 = load_image(game, "./sprites/Racoon_64_1.xpm");
 	game->sprites.player_left = load_image(game, "./sprites/Racoon_left.xpm");
+	game->sprites.player_left_1 = load_image(game, "./sprites/Racoon_left_1.xpm");
 	game->sprites.player_right = load_image(game, "./sprites/Racoon_right.xpm");
-	//Poner background
+	game->sprites.player_right_1 = load_image(game, "./sprites/Racoon_right_1.xpm");
 }
 
 void	draw_map(t_game *game)
@@ -95,7 +78,8 @@ void	draw_map(t_game *game)
 
 void	load_draw_map(t_game *game)
 {	
-	load_sprites(game);
+	if (game->sprites.floor != load_image(game, "./sprites/floor_64.xpm"))
+		load_sprites(game);
 	draw_map(game);
 	draw_player(game);
 }

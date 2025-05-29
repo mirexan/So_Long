@@ -33,10 +33,13 @@ typedef struct	s_sprites
 	void	*collect;
 	void	*exit; 
 	void	*player;
+	void	*player_1;
 	void	*player_up;
+	void	*player_up_1;
 	void	*player_left;
+	void	*player_left_1;
 	void	*player_right;
-	//void	*move[4][2];
+	void	*player_right_1;
 } t_sprites;
 
 typedef struct	s_game
@@ -47,7 +50,7 @@ typedef struct	s_game
 	int			player_x;
 	int			player_y;
 	int			player_dir;
-	//int			player_moving;
+	int			player_moving;
 	int			move_count;
 	t_sprites	sprites;
 } t_game;
@@ -64,5 +67,6 @@ void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
+void	draw_player(t_game *game);
 
 #endif

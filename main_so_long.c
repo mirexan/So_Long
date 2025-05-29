@@ -11,6 +11,29 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+static void	init_game_var(t_game *game)
+{
+	game->map = NULL;
+	game->mlx = NULL;
+	game->win = NULL;
+	game->player_x = 0;
+	game->player_y = 0;
+	game->player_dir = 0;
+	game->move_count = 0;
+	game->player_moving = 0;
+	/*game->sprites.floor = NULL;
+	game->sprites.wall = NULL;
+	game->sprites.collect = NULL;
+	game->sprites.exit = NULL;
+	game->sprites.player = NULL;
+	game->sprites.player_up = NULL;
+	game->sprites.player_left = NULL;
+	game->sprites.player_right = NULL;
+	game->sprites.player_1 = NULL;
+	game->sprites.player_up_1 = NULL;
+	game->sprites.player_left_1 = NULL;
+	game->sprites.player_right_1 = NULL;*/
+}
 
 static void open_read_maps(char *argv[], t_game *game)
 {
@@ -39,8 +62,8 @@ int	main(int argc, char *argv[])
 		ft_putstr_fd("Error, no se ha adjuntado mapa\n", 2);
 		return (1);
 	}
-	 open_read_maps(argv,&game);
-	ft_printf("Dibujando jugador en x=%d, y=%d, dir=%d\n", game.player_x, game.player_y, game.player_dir);
+	init_game_var(&game);
+	open_read_maps(argv,&game);
 	init_window(&game);
 	mlx_key_hook(game.win, handle_key,&game);
 	mlx_hook(game.win, 17, 0, handle_close,&game);

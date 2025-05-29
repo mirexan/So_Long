@@ -20,14 +20,16 @@ void	move_up(t_game	*game)
 		game->player_dir = 1;
 		game->move_count++;
 		ft_printf("Moves : %d\n", game->move_count);
-		draw_map(game);
+		load_draw_map(game);
+		game->player_moving = 1 - game->player_moving;
 	}
 }
 
 void	move_down(t_game	*game)
 {
 	int	h;
-
+	
+	h = 0;
 	while(game->map[h])
 		h++;
 	if (game->player_y + 1 < h && (game->map[game->player_y + 1][game->player_x] != '1'))
@@ -36,7 +38,8 @@ void	move_down(t_game	*game)
 		game->player_dir = 0;
 		game->move_count++;
 		ft_printf("Moves : %d\n", game->move_count);
-		draw_map(game);
+		load_draw_map(game);
+		game->player_moving = 1 - game->player_moving;
 	}
 }
 
@@ -48,7 +51,8 @@ void	move_left(t_game	*game)
 		game->player_dir = 2;
 		game->move_count++;
 		ft_printf("Moves : %d\n", game->move_count);
-		draw_map(game);
+		load_draw_map(game);
+		game->player_moving = 1 - game->player_moving;
 	}
 }
 
@@ -63,6 +67,7 @@ void	move_right(t_game	*game)
 		game->player_dir = 3;
 		game->move_count++;
 		ft_printf("Moves : %d\n", game->move_count);
-		draw_map(game);
+		load_draw_map(game);
+		game->player_moving = 1 - game->player_moving;
 	}
 }
