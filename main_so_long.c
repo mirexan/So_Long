@@ -21,6 +21,7 @@ static void	init_game_var(t_game *game)
 	game->player_dir = 0;
 	game->move_count = 0;
 	game->player_moving = 0;
+	game->collected = 0;
 	/*game->sprites.floor = NULL;
 	game->sprites.wall = NULL;
 	game->sprites.collect = NULL;
@@ -47,7 +48,6 @@ static void open_read_maps(char *argv[], t_game *game)
 	game->map = read_maps(fd);
 	if (!game->map || !check_map(game))
 	{
-		ft_putstr_fd("Error mapa\n", 2);
 		free_map(game->map);
 		exit (1);
 	}

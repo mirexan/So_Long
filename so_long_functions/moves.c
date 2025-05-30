@@ -12,10 +12,27 @@
 
 #include "../so_long.h"
 
+static void	update_map(t_game *game)
+{
+	int	x;
+	int	y;
+	
+	y = game->player_y;
+	x = game->player_x;
+	if (game->map[y][x] == 'C')
+	{
+		game->collected++;
+		game->map[y][x] = '0';
+	}
+	if (game->map[y][x] == 'E' && game->collected == game->total_collect)
+		handle_close(game);
+}
+
 void	move_up(t_game	*game)
 {
 	if (game->player_y > 0 && (game->map[game->player_y -1][game->player_x] != '1'))
 	{
+		update_map(game);
 		game->player_y--;
 		game->player_dir = 1;
 		game->move_count++;
@@ -34,6 +51,7 @@ void	move_down(t_game	*game)
 		h++;
 	if (game->player_y + 1 < h && (game->map[game->player_y + 1][game->player_x] != '1'))
 	{
+		update_map(game);
 		game->player_y++;
 		game->player_dir = 0;
 		game->move_count++;
@@ -47,6 +65,7 @@ void	move_left(t_game	*game)
 {
 	if (game->player_x > 0 && (game->map[game->player_y][game->player_x - 1] != '1'))
 	{
+		update_map(game);
 		game->player_x--;
 		game->player_dir = 2;
 		game->move_count++;
@@ -63,6 +82,7 @@ void	move_right(t_game	*game)
 	w = ft_strlen(game->map[game->player_y]);
 	if ((game->player_x + 1 < w) && (game->map[game->player_y][game->player_x + 1] != '1'))
 	{
+		update_map(game);
 		game->player_x++;
 		game->player_dir = 3;
 		game->move_count++;

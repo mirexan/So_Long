@@ -47,11 +47,15 @@ typedef struct	s_game
 	void		*mlx;
 	void		*win;
 	char		**map;
-	int			player_x;
-	int			player_y;
-	int			player_dir;
-	int			player_moving;
-	int			move_count;
+	int		player_x;
+	int		player_y;
+	int		player_dir;
+	int		player_moving;
+	int		move_count;
+	int		collected;
+	int		total_collect;
+	int		reachable_collect;
+	int		exit_reachable;
 	t_sprites	sprites;
 } t_game;
 
@@ -68,5 +72,6 @@ void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
 void	draw_player(t_game *game);
+int	is_reachable(t_game *game);
 
 #endif

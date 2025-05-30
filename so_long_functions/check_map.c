@@ -17,6 +17,8 @@ static int	check_map_shape(t_game *game)
 	int	i;
 	int	len;
 
+	game->total_collect = 0;
+	game->reachable_collect = 0;
 	if (!game->map || !game->map[0])
 		return (0);
 	len = ft_strlen(game->map[0]);
@@ -30,14 +32,14 @@ static int	check_map_shape(t_game *game)
 	return (1);
 }
 
-static void	count_elements(char c_map, int *p, int *e, int *c)
+static void	count_elements(char c_map, int *p, int *e, t_game *game)
 {
 	if (c_map == 'P')
 		(*p)++;
 	else if (c_map == 'E')
 		(*e)++;
 	else if (c_map == 'C')
-		(*c)++;
+		game->total_collect++;
 }
 
 static int	check_map_elements(t_game *game)
@@ -46,18 +48,17 @@ static int	check_map_elements(t_game *game)
 	int	j;
 	int	p;
 	int	e;
-	int	c;
 
 	i = -1;
 	p = 0;
 	e = 0;
-	c = 0;
+	
 	while (game->map[++i])
 	{
 		j = -1;
 		while (game->map[i][++j])
 		{
-			count_elements(game->map[i][j], &p, &e, &c);
+			count_elements(game->map[i][j], &p, &e, game);
 			if (game->map[i][j] == 'P')
 			{
 				game->player_y = i;
@@ -67,7 +68,7 @@ static int	check_map_elements(t_game *game)
 			}
 		}
 	}
-	return (p == 1 && e == 1 && c >= 1);
+	return (p == 1 && e == 1 && game->total_collect >= 1);
 }
 
 static int	check_map_walls(t_game *game)
@@ -112,6 +113,11 @@ int	check_map(t_game *game)
 	if (!check_map_walls(game))
 	{
 		ft_putstr_fd("Error en los muros del mapa\n", 2);
+		return (0);
+	}
+	if (!is_reachable(game))
+	{
+		ft_putstr_fd("Error, mapa con elementos inalcanzables\n", 2);
 		return (0);
 	}
 	return (1);
