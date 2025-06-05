@@ -29,8 +29,10 @@ int	handle_key(int keycode, t_game *game)
 
 int	handle_close(t_game *game)
 {
+	free_sprites(game);
 	free_map(game->map);
 	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
 	exit (0);
 }
-

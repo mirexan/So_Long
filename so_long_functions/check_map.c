@@ -52,7 +52,7 @@ static int	check_map_elements(t_game *game)
 	i = -1;
 	p = 0;
 	e = 0;
-	
+
 	while (game->map[++i])
 	{
 		j = -1;

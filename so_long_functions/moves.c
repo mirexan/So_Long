@@ -16,7 +16,7 @@ static void	update_map(t_game *game)
 {
 	int	x;
 	int	y;
-	
+
 	y = game->player_y;
 	x = game->player_x;
 	if (game->map[y][x] == 'C')
@@ -30,7 +30,8 @@ static void	update_map(t_game *game)
 
 void	move_up(t_game	*game)
 {
-	if (game->player_y > 0 && (game->map[game->player_y -1][game->player_x] != '1'))
+	if (game->player_y > 0 && (
+			game->map[game->player_y -1][game->player_x] != '1'))
 	{
 		update_map(game);
 		game->player_y--;
@@ -45,11 +46,12 @@ void	move_up(t_game	*game)
 void	move_down(t_game	*game)
 {
 	int	h;
-	
+
 	h = 0;
-	while(game->map[h])
+	while (game->map[h])
 		h++;
-	if (game->player_y + 1 < h && (game->map[game->player_y + 1][game->player_x] != '1'))
+	if (game->player_y + 1 < h && (
+			game->map[game->player_y + 1][game->player_x] != '1'))
 	{
 		update_map(game);
 		game->player_y++;
@@ -63,7 +65,8 @@ void	move_down(t_game	*game)
 
 void	move_left(t_game	*game)
 {
-	if (game->player_x > 0 && (game->map[game->player_y][game->player_x - 1] != '1'))
+	if (game->player_x > 0 && (
+			game->map[game->player_y][game->player_x - 1] != '1'))
 	{
 		update_map(game);
 		game->player_x--;
@@ -80,7 +83,8 @@ void	move_right(t_game	*game)
 	int	w;
 
 	w = ft_strlen(game->map[game->player_y]);
-	if ((game->player_x + 1 < w) && (game->map[game->player_y][game->player_x + 1] != '1'))
+	if ((game->player_x + 1 < w) && (
+			game->map[game->player_y][game->player_x + 1] != '1'))
 	{
 		update_map(game);
 		game->player_x++;

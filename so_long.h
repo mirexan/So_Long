@@ -11,27 +11,26 @@
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-# define	SO_LONG_H
+# define SO_LONG_H
 
-#	ifndef TILE_SIZE
-#	 define TILE_SIZE 64
-#	endif
+# ifndef TILE_SIZE
+#  define TILE_SIZE 64
+# endif
 
-#include "ft_printf/ft_printf.h"
-#include "ft_getNextLine/get_next_line_bonus.h"
-#include "minilibx-linux/mlx.h"
-#include "minilibx-linux/mlx_int.h"
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
+# include "ft_printf/ft_printf.h"
+# include "ft_getNextLine/get_next_line_bonus.h"
+# include "minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx_int.h"
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
 
-typedef struct	s_sprites
+typedef struct s_sprites
 {
-	void	*background;
 	void	*floor;
 	void	*wall;
 	void	*collect;
-	void	*exit; 
+	void	*exit;
 	void	*player;
 	void	*player_1;
 	void	*player_up;
@@ -40,24 +39,24 @@ typedef struct	s_sprites
 	void	*player_left_1;
 	void	*player_right;
 	void	*player_right_1;
-} t_sprites;
+}	t_sprites;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
 	char		**map;
-	int		player_x;
-	int		player_y;
-	int		player_dir;
-	int		player_moving;
-	int		move_count;
-	int		collected;
-	int		total_collect;
-	int		reachable_collect;
-	int		exit_reachable;
+	int			player_x;
+	int			player_y;
+	int			player_dir;
+	int			player_moving;
+	int			move_count;
+	int			collected;
+	int			total_collect;
+	int			reachable_collect;
+	int			exit_reachable;
 	t_sprites	sprites;
-} t_game;
+}	t_game;
 
 char	**read_maps(int fd);
 void	free_map(char **map);
@@ -72,6 +71,9 @@ void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
 void	draw_player(t_game *game);
-int	is_reachable(t_game *game);
+int		is_reachable(t_game *game);
+void	free_sprites(t_game *game);
+void	load_sprites(t_game *game);
+void	*load_image(t_game *game, char *path);
 
 #endif

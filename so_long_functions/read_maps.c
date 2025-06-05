@@ -40,7 +40,7 @@ static char	**allocate_tmp(char **map, int read_lines, char *line)
 	}
 	tmp[read_lines] = line; //se añade la nueva línea al final
 	tmp[read_lines + 1] = NULL; //y se añade NULL
-	return(tmp);
+	return (tmp);
 }
 
 static char	*clean_line(char *line)
@@ -72,7 +72,7 @@ char	**read_maps(int fd)
 		{
 			free(line);
 			free_map(map);
-			return(NULL);
+			return (NULL);
 		}
 		free(map);//liberamos array viejo para
 		map = tmp;//poder actualizar con el nuevo

@@ -38,7 +38,6 @@ static void	*get_player_sprite(t_game *game)
 			return (game->sprites.player_right);
 		return (game->sprites.player_right_1);
 	}
-
 }
 
 void	draw_player(t_game *game)
@@ -46,6 +45,7 @@ void	draw_player(t_game *game)
 	int		x;
 	int		y;
 	void	*img;
+
 	x = game->player_x * TILE_SIZE;
 	y = game->player_y * TILE_SIZE;
 	mlx_put_image_to_window(game->mlx, game->win, game->sprites.floor, x, y);

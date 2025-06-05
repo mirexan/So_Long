@@ -15,8 +15,8 @@
 static char	**copy_map(char **map)
 {
 	char	**copy;
-	int	i;
-	
+	int		i;
+
 	i = 0;
 	while (map[i])
 		i++;
@@ -41,7 +41,7 @@ static char	**copy_map(char **map)
 static void	flood_fill(char **copied_map, int y, int x, t_game *game)
 {//empieza desde posicion player
 	if (copied_map[y][x] == '1' || copied_map[y][x] == 'V')
-		return;//si es muro o ya se visito salimos recursion
+		return ;//si es muro o ya se visito salimos recursion
 	if (copied_map[y][x] == 'C')
 		game->reachable_collect++;
 	if (copied_map[y][x] == 'E')
@@ -62,7 +62,7 @@ int	is_reachable(t_game *game)
 	if (!copied_map)
 		return (0);
 	flood_fill(copied_map, game->player_y, game->player_x, game);
-	free(copied_map);
-	return (game->reachable_collect == game->total_collect &&
-	 game->exit_reachable);
+	free_map(copied_map);
+	return ((game->reachable_collect == game->total_collect)
+		&& game->exit_reachable);
 }

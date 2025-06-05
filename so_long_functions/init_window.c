@@ -25,7 +25,7 @@ static int	count_lines(char **map)
 void	init_window(t_game	*game)
 {
 	int			height;
-	
+
 	game->mlx = mlx_init(); //inicia conexion con sistema grafico y devuelve puntero
 	if (!game->mlx)//de contexto
 	{
@@ -34,13 +34,14 @@ void	init_window(t_game	*game)
 		exit (1);
 	}
 	height = count_lines(game->map);
-	game->win = mlx_new_window(game->mlx, ft_strlen(game->map[0]) 
-		* TILE_SIZE, height * TILE_SIZE, "so_long");
+	game->win = mlx_new_window(game->mlx, ft_strlen(game->map[0])
+			* TILE_SIZE, height * TILE_SIZE, "so_long");
 	if (!game->win)//devuelve puntero que representa ventana
 	{
 		ft_putstr_fd("Error al abrir la ventana\n", 2);
 		free_map(game->map);
 		exit (1);
 	}
+	load_sprites(game);
 	load_draw_map(game);
 }
