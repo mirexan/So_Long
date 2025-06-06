@@ -32,7 +32,11 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 all : $(NAME)
 
-$(MLXX_LIB):
+$(MLX_LIB):
+	@if [ ! -f $(MLX_LIB) ]; then \
+		echo "libmlx.a no encontrada. Ejecutando ./configure..."; \
+		cd $(MLX_DIR) && ./configure; \
+	fi
 	$(MAKE) -C $(MLX_DIR)
 
 $(NAME) : $(OBJS) Makefile $(HEADERS) $(MLX_LIB)
