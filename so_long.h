@@ -75,5 +75,7 @@ int		is_reachable(t_game *game);
 void	free_sprites(t_game *game);
 void	load_sprites(t_game *game);
 void	*load_image(t_game *game, char *path);
+char	*ft_strrchr(const char *str, int c);
+int	ft_strncmp(const char *s1, const char *s2);
 
 #endif

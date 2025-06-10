@@ -19,7 +19,7 @@ SRCS =  $(PRINTF_DIR)/char_handler.c $(PRINTF_DIR)/ft_puthex.c $(PRINTF_DIR)/Lib
 		$(PRINTF_DIR)/Libft_src/ft_itoa.c $(PRINTF_DIR)/Libft_src/ft_strlen.c $(SL_DIR)/read_maps.c\
 		$(GNL_DIR)/get_next_line_utils_bonus.c $(SL_DIR)/check_map.c $(SL_DIR)/init_window.c \
 		$(SL_DIR)/load_draw_map.c $(SL_DIR)/hooks.c $(SL_DIR)/moves.c $(SL_DIR)/draw_player.c \
-		$(SL_DIR)/is_reachable.c
+		$(SL_DIR)/is_reachable.c $(SL_DIR)/ft_strrchr.c $(PRINTF_DIR)/Libft_src/ft_strcmp.c
 
 
 OBJS = $(SRCS:.c=.o)
