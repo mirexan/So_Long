@@ -13,3 +13,5 @@ El proyecto consiste en desarrollar un pequeńo juego mediante el uso de la mini
 
 ![Screenshot from 2025-06-10 18-28-52](https://github.com/user-attachments/assets/0f1794c7-5259-42fb-8ab9-d912f65edceb)
 La terminal debe mostrar el numero de movimientos realizados
+
+**⚠️Si se clona en entorno windows importante ejecutarlo con WSL2 y servidor X para windows, como VcXsrv**
